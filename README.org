@@ -1,0 +1,8 @@
+#+author: Emerson
+#+email: emersonfb99@gmail.com
+
+* Emerson's NixOS config.
+
+  My NixOS config.
+
+  WIP...

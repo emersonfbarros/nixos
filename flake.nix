@@ -1,0 +1,41 @@
+{
+  description = "My NixOS flake";
+
+  inputs = {
+    # nixpkgs.url = "nixpkgs/nixos-24.05" ;
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix.url = "github:danth/stylix";
+  };
+
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+    in
+    {
+      nixosConfigurations.nixos = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./nixos/configuration.nix
+          inputs.stylix.nixosModules.stylix
+        ];
+        # specialArgs.pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+      };
+
+      homeConfigurations.emerson = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          ./home-manager/home.nix
+          inputs.stylix.homeManagerModules.stylix
+        ];
+        # extraSpecialArgs.pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+      };
+    };
+}
