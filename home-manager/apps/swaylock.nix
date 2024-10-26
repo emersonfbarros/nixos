@@ -40,7 +40,7 @@
 
         # Line between the inside and ring
         line-color = "#${colors.base0B}11";
-        line-clear-color = "#${colors.base0c}11";
+        line-clear-color = "#${colors.base0C}11";
         line-caps-lock-color = "#${colors.base0E}11";
         line-ver-color = "#${colors.base0D}11";
         line-wrong-color = "#${colors.base08}11";
