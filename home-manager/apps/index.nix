@@ -8,6 +8,7 @@
     ./mako.nix
     ./starship.nix
     ./sway.nix
+    ./swaylock.nix
     ./tmux.nix
     ./tofi.nix
     ./utils.nix
