@@ -48,51 +48,51 @@
         };
       };
 
-      defaultWorkspace = "workspace number 1";
+      defaultWorkspace = "1";
       workspaceOutputAssign = [
         {
           output = "eDP-1";
-          workspace = "workspace number 1";
+          workspace = "1";
         }
         {
           output = "eDP-1";
-          workspace = "workspace number 2";
+          workspace = "2";
         }
         {
           output = "eDP-1";
-          workspace = "workspace number 3";
+          workspace = "3";
         }
         {
           output = "eDP-1";
-          workspace = "workspace number 4";
+          workspace = "4";
         }
         {
           output = "eDP-1";
-          workspace = "workspace number 5";
+          workspace = "5";
         }
         {
           output = "HDMI-A-1";
-          workspace = "workspace number 5";
+          workspace = "5";
         }
         {
           output = "HDMI-A-1";
-          workspace = "workspace number 6";
+          workspace = "6";
         }
         {
           output = "HDMI-A-1";
-          workspace = "workspace number 7";
+          workspace = "7";
         }
         {
           output = "HDMI-A-1";
-          workspace = "workspace number 8";
+          workspace = "8";
         }
         {
           output = "HDMI-A-1";
-          workspace = "workspace number 9";
+          workspace = "9";
         }
         {
           output = "HDMI-A-1";
-          workspace = "workspace number 10";
+          workspace = "10";
         }
       ];
 
