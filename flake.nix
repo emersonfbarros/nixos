@@ -25,6 +25,14 @@
         modules = [
           ./nixos/configuration.nix
           inputs.stylix.nixosModules.stylix
+          # To nixd find <nixpkgs>
+          {
+            nix.nixPath = [
+              "nixpkgs=${inputs.nixpkgs}"
+              # Add home-manager to nixPath if you want nixd to understand HM options
+              "home-manager=${inputs.home-manager}"
+            ];
+          }
         ];
         # specialArgs.pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
       };

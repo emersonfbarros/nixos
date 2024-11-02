@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   imports = [
     # Include the results of the hardware scan and my modules
@@ -22,9 +21,9 @@
     acpi
     gnupg
     pinentry-all
-    nixfmt-rfc-style
 
-    gcc
+    # Build and dev tools
+    gcc # No need to explain
     binutils # Binary utilities
     cmake # CMake build system
     autoconf # Autoconf for configure scripts
@@ -32,6 +31,10 @@
     pkg-config # To manage library compile/link flags
     libtool # Generic library support
     gnumake # GNU Make
+
+    # Making edit nix files more enjoyable
+    nixd
+    nixfmt-rfc-style
   ];
 
   nix.gc = {
