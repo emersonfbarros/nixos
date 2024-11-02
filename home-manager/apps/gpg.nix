@@ -15,6 +15,5 @@
     defaultCacheTtl = 1800; # 30 minutes
     maxCacheTtl = 7200; # 2 hours
     pinentryPackage = pkgs.pinentry-curses; # Or "qt" if you use KDE, "curses" for terminal
-    # pinentryFlavor = "curses"; # Or "qt" if you use KDE, "curses" for terminal
   };
 }
