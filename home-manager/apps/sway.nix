@@ -26,10 +26,10 @@
         }
         {
           command = ''
-            ${pkgs.swayidle} -w \
-              timeout 300 'swaylock' \
+            ${pkgs.swayidle}/bin/swayidle -w \
+              timeout 300 'swaylock -f' \
               timeout 420 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-              timeout 540 'systemctl suspend' before-sleep 'swaylock'
+              timeout 540 'systemctl suspend' before-sleep 'swaylock -f'
           '';
         }
       ];
@@ -48,52 +48,31 @@
       };
 
       defaultWorkspace = "1";
-      workspaceOutputAssign = [
-        {
-          output = "eDP-1";
-          workspace = "1";
-        }
-        {
-          output = "eDP-1";
-          workspace = "2";
-        }
-        {
-          output = "eDP-1";
-          workspace = "3";
-        }
-        {
-          output = "eDP-1";
-          workspace = "4";
-        }
-        {
-          output = "eDP-1";
-          workspace = "5";
-        }
-        {
-          output = "HDMI-A-1";
-          workspace = "5";
-        }
-        {
-          output = "HDMI-A-1";
-          workspace = "6";
-        }
-        {
-          output = "HDMI-A-1";
-          workspace = "7";
-        }
-        {
-          output = "HDMI-A-1";
-          workspace = "8";
-        }
-        {
-          output = "HDMI-A-1";
-          workspace = "9";
-        }
-        {
-          output = "HDMI-A-1";
-          workspace = "10";
-        }
-      ];
+
+      workspaceOutputAssign =
+        let
+          mkAssignments =
+            output: workspaces:
+            map (ws: {
+              output = output;
+              workspace = toString ws;
+            }) workspaces;
+        in
+        mkAssignments "eDP-1" [
+          1
+          2
+          3
+          4
+          5
+        ]
+        ++ mkAssignments "HDMI-A-1" [
+          5
+          6
+          7
+          8
+          9
+          10
+        ];
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
