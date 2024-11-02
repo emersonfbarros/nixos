@@ -10,7 +10,6 @@
     slurp
     swappy
     playerctl
-    neovim
     zip
     xfce.thunar
     xfce.thunar-volman

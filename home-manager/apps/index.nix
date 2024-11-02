@@ -6,6 +6,7 @@
     ./htop.nix
     ./kitty.nix
     ./mako.nix
+    ./nvim.nix
     ./starship.nix
     ./sway.nix
     ./swaylock.nix
