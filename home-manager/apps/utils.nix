@@ -18,6 +18,8 @@
     pavucontrol
     blueman
     gh
+    lua-language-server
+    stylua
   ];
 
   services = {
