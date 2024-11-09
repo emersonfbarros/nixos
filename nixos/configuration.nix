@@ -15,19 +15,6 @@
   # Forgive me, Stallman sensei
   nixpkgs.config.allowUnfree = true;
 
-  # System level packages
-  environment.systemPackages = with pkgs; [
-    xdg-utils
-    acpi
-    gnupg
-    pinentry-all
-
-
-    # Making edit nix files more enjoyable
-    nixd
-    nixfmt-rfc-style
-  ];
-
   nix.gc = {
     automatic = true;
     dates = "weekly";
