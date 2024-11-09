@@ -9,5 +9,6 @@
     cargo
 
     nodejs
+    python3
   ];
 }
