@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  home.file.".config/nvim".source = "${builtins.getEnv "HOME"}/config.nvim";
+  home.file."./.config/nvim/".source = config.lib.file.mkOutOfStoreSymlink "/home/emerson/.dotfiles/home-manager/apps/nvim";
   home.packages = with pkgs; [
     neovim
 
@@ -8,7 +8,6 @@
     gopls
     taplo
     rust-analyzer
-    clippy
     typescript-language-server
     lua-language-server
     bash-language-server
@@ -18,14 +17,16 @@
     dockerfile-language-server-nodejs
     docker-compose-language-service
     vscode-langservers-extracted
+    nixd
 
     # DAPs
     delve
-    vscode-extensions.vadimcn.vscode-lldb
+    vscode-extensions.vadimcn.vscode-lldb.adapter
     vscode-js-debug
 
     # Linters
     golangci-lint
+    clippy
     buf
     biome
     eslint
@@ -36,8 +37,10 @@
     gofumpt
     goimports-reviser
     golines
+    rustfmt
     stylua
     nodePackages_latest.prettier
     shfmt
+    nixfmt-rfc-style
   ];
 }
