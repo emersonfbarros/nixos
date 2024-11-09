@@ -100,6 +100,11 @@
         format = ''([$symbol($version )](fg:#6CC24A))'';
       };
 
+      lua = {
+        symbol = ''󰢱 '';
+        format = ''([$symbol($version )](fg:#010080))'';
+      };
+
       python = {
         symbol = '' '';
         format = ''([$symbol($version )](fg:#3C77A8))'';
