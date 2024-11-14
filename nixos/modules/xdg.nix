@@ -22,5 +22,4 @@
     };
     mime.enable = true;
   };
-  home.packages = [ pkgs.xdg-utils ];
 }
