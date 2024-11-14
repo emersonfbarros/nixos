@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  home.file."./.config/nvim/".source = config.lib.file.mkOutOfStoreSymlink "/home/emerson/.dotfiles/home-manager/apps/nvim";
+  home.file.".config/nvim/".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home-manager/apps/nvim";
   home.packages = with pkgs; [
     neovim
 
