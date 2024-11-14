@@ -2,7 +2,6 @@
   description = "My NixOS flake";
 
   inputs = {
-    # nixpkgs.url = "nixpkgs/nixos-24.05" ;
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -34,7 +33,6 @@
             ];
           }
         ];
-        # specialArgs.pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
       };
 
       homeConfigurations.emerson = inputs.home-manager.lib.homeManagerConfiguration {
@@ -43,7 +41,6 @@
           ./home-manager/home.nix
           inputs.stylix.homeManagerModules.stylix
         ];
-        # extraSpecialArgs.pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
       };
     };
 }
