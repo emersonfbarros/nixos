@@ -18,6 +18,8 @@
       menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true";
       startup = [
         { command = "${pkgs.autotiling}/bin/autotiling"; }
+        { command = "${pkgs.gammastep}/bin/gammastep"; }
+        { command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; }
         {
           command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";
         }
