@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    acpi
     jq
     libnotify
     fastfetch
@@ -18,6 +19,7 @@
     blueman
     gh
     xdg-utils
+    networkmanagerapplet
   ];
 
   services = {
