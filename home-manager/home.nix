@@ -3,7 +3,6 @@
     ./apps/index.nix
     ./bin/index.nix
     ./coding/index.nix
-    ./env/index.nix
   ];
 
   home.username = "emerson";
