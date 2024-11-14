@@ -17,5 +17,6 @@
     ./ssh.nix
     ./gpg.nix
     ./git.nix
+    ./gammastep.nix
   ];
 }
