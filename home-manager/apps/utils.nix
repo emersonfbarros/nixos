@@ -20,6 +20,8 @@
     blueman
     gh
     xdg-utils
+    mpv
+    yt-dlp
     networkmanagerapplet
     zathura
   ];
