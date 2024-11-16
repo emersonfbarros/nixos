@@ -28,8 +28,13 @@
     };
 
     keybindings = {
+      "ctrl+shift+s" = ''launch --type overlay --title "kitab" kitab'';
+      "ctrl+shift+7" = "launch --type overlay kiwindow 0";
+      "ctrl+shift+8" = "launch --type overlay kiwindow 1";
+      "ctrl+shift+9" = "launch --type overlay kiwindow 2";
+      "ctrl+shift+0" = "launch --type overlay kiwindow 3";
+
       "f1" = "launch --stdin-source=@screen_scrollback nvim";
-      "ctrl+shift+s" = ''launch --type overlay --title "ktab" ktab'';
       "ctrl+shift+enter" = "launch --cwd=current";
       "ctrl+shift+n" = "set_tab_title";
       "ctrl+shift+v" = "paste_from_clipboard";
