@@ -5,7 +5,6 @@
     ./chmic.nix
     ./tofi-power.nix
     ./zt.nix
-    ./startsway.nix
     ./selectfile.nix
     ./v.nix
   ];

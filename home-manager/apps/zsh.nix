@@ -145,6 +145,6 @@
       }
     ];
 
-    profileExtra = ''[ "$(tty)" = "/dev/tty1" ] && exec start-sway'';
+    profileExtra = ''[ "$(tty)" = "/dev/tty1" ] && ${pkgs.sway}/bin/sway'';
   };
 }
