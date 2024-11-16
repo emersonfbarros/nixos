@@ -4,11 +4,11 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "Lilex" ]; };
-        name = "Lilex Nerd Font Mono";
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
         package = pkgs.dejavu_fonts;
