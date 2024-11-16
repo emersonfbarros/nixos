@@ -19,5 +19,6 @@
     ./git.nix
     ./gammastep.nix
     ./waybar.nix
+    ./xdg.nix
   ];
 }

@@ -9,7 +9,6 @@
     ./system-services.nix
     ./system-style.nix
     ./user.nix
-    ./xdg.nix
     ./docker.nix
   ];
 }
