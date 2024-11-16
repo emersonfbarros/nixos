@@ -9,6 +9,7 @@
     firefox
     grim
     slurp
+    grim
     swappy
     playerctl
     zip
@@ -20,6 +21,7 @@
     gh
     xdg-utils
     networkmanagerapplet
+    zathura
   ];
 
   services = {
