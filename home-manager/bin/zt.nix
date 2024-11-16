@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   ztScript = pkgs.writeShellScriptBin "zt" ''
     if [[ $# -eq 1 ]]; then

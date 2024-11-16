@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   brightnessHighIcon = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/emersonfbarros/dotfiles/main/mako/.config/mako/icons/brightness-high.svg";

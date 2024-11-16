@@ -10,8 +10,8 @@ let
     if [ -n "$file" ]; then
       ${pkgs.neovim}/bin/nvim "$file"
     fi
-      '';
-    in
+  '';
+in
 {
   home.packages = [ v ];
 }

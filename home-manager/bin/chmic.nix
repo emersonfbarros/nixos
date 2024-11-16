@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   micIcon = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/emersonfbarros/dotfiles/refs/heads/main/mako/.config/mako/icons/mic.svg";

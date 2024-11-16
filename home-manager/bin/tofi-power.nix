@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   powerScript = pkgs.writeShellScriptBin "tofi-power" ''
     chosen=$(printf "  Power Off\n  Restart\n󰍃  Log Out\n  Lock\n󰒲  Sleep" | ${pkgs.tofi}/bin/tofi --prompt-text "Power Menu:  ")

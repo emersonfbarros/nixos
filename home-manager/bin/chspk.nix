@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   volUpIcon = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/emersonfbarros/dotfiles/refs/heads/main/mako/.config/mako/icons/volume_up.svg";
