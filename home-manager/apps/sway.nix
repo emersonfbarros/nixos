@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
-    sway
     swayidle
     swayimg
     autotiling
@@ -88,7 +87,16 @@
         "${modifier}+c" = ''
           exec ${pkgs.cliphist}/bin/cliphist list | \
             ${pkgs.tofi}/bin/tofi --prompt-text "Clipboard:  " | \
-            ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-paste
+            ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy
+        '';
+
+        "${modifier}+q" = "kill";
+
+        "${modifier}+Shift+q" = ''
+          exec swaynag -t warning \
+            -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
+            -B 'Yes, exit sway' \
+            'swaymsg exit'
         '';
 
         # Media keys
@@ -98,6 +106,9 @@
         "XF86AudioRaiseVolume" = "exec chspk up";
         "XF86AudioLowerVolume" = "exec chspk down";
         "XF86AudioMute" = "exec chspk mute";
+
+        "Shift+XF86AudioRaiseVolume" = "exec chmic up";
+        "Shift+XF86AudioLowerVolume" = "exec chmic down";
       };
 
       gaps = {
@@ -110,9 +121,24 @@
         hideEdgeBorders = "smart";
       };
 
-      floating.titlebar = false;
+      floating = {
+        titlebar = false;
+        criteria = [
+          {
+            title = "Steam - Update News";
+          }
+          {
+            app_id = "org.pulseaudio.pavucontrol";
+          }
+          {
+            app_id = ".blueman-manager-wrapped";
+          }
+          {
+            app_id = "nm-connection-editor";
+          }
+        ];
+      };
 
-      # You can add more Sway config options here
       bars = [
         {
           position = "top"; # Changed from bottom to top
@@ -122,8 +148,8 @@
           command = "${pkgs.waybar}/bin/waybar";
         }
       ];
-      # startup = [];
     };
+
     extraConfig = ''
       exec systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
     '';
