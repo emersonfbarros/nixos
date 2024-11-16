@@ -30,6 +30,7 @@ let
 
       # Execute mpv with the chosen options
       nohup ${pkgs.mpv}/bin/mpv --ytdl-format="bestvideo[height<=?$resolution]+bestaudio/best" "$link" >/dev/null 2>&1 &
+      notify-send "YouTube" "Your video will start shortly."
     }
 
     main
