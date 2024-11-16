@@ -141,12 +141,13 @@
             "interval" = 20;
             "format" = "  {}%";
             "max-length" = 7;
+            "tooltip-format" = "{used:0.2f}G/{total:0.2f}G";
           };
 
           "disk" = {
             "interval" = 300;
             "format" = "  {percentage_used}%";
-            "path"= "/";
+            "path" = "/";
           };
 
           "custom/battery" = {
