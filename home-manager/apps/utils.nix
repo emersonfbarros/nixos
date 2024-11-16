@@ -21,6 +21,7 @@
     gh
     xdg-utils
     mpv
+    spotify
     yt-dlp
     networkmanagerapplet
     zathura

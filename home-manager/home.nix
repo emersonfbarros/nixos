@@ -5,6 +5,11 @@
     ./coding/index.nix
   ];
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
+
   home.username = "emerson";
   home.homeDirectory = "/home/emerson";
 
