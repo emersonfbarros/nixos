@@ -13,9 +13,9 @@
       layer = "overlay";
       actions = true;
       font = "DejaVu Sans 10";
-      backgroundColor = "#${colors.base01}";
-      textColor = "#${colors.base06}";
-      borderColor = "#${colors.base07}";
+      backgroundColor = "#${colors.base00}";
+      textColor = "#${colors.base05}";
+      borderColor = "#${colors.base02}";
       progressColor = "#${colors.base03}";
       extraConfig = ''
         on-button-left=dismiss
@@ -39,4 +39,6 @@
         group-by=category
       '';
     };
+
+  stylix.targets.mako.enable = false;
 }
