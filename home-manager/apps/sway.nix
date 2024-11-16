@@ -82,6 +82,10 @@
 
         "${modifier}+p" = "exec tofi-power";
 
+        "${modifier}+y" = "exec yt";
+
+        "${modifier}+u" = "exec tofi-web-search";
+
         "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';
 
         "${modifier}+c" = ''
