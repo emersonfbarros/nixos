@@ -18,5 +18,6 @@
     ./gpg.nix
     ./git.nix
     ./gammastep.nix
+    ./waybar.nix
   ];
 }
