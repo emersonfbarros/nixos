@@ -79,6 +79,8 @@
       keybindings = lib.mkOptionDefault {
         "${modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
+        "${modifier}+Shift+b" = "exec sway bar mode toggle";
+
         "${modifier}+p" = "exec tofi-power";
 
         "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';
@@ -115,21 +117,9 @@
         {
           position = "top"; # Changed from bottom to top
           mode = "dock";
-          hiddenState = "hide";
+          extraConfig = "modifier ${modifier}";
 
-          statusCommand = "${pkgs.i3status}/bin/i3status";
-
-          fonts = {
-            names = [
-              "Lilex Nerd Font Mono"
-            ];
-            size = 8.0;
-          };
-
-          # Additional bar settings
-          workspaceButtons = true;
-          workspaceNumbers = true;
-          trayOutput = "primary";
+          command = "${pkgs.waybar}/bin/waybar";
         }
       ];
       # startup = [];
