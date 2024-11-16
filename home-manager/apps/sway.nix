@@ -151,7 +151,17 @@
     };
 
     extraConfig = ''
-      exec systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
+      exec systemctl --user set-environment XDG_CURRENT_DESKTOP=sway
+      exec systemctl --user import-environment DISPLAY \
+        SWAYSOCK \
+        WAYLAND_DISPLAY \
+        XDG_CURRENT_DESKTOP
+
+      exec hash dbus-update-activation-environment 2>/dev/null && \
+          dbus-update-activation-environment --systemd DISPLAY \
+              SWAYSOCK \
+              XDG_CURRENT_DESKTOP=sway \
+              WAYLAND_DISPLAY
     '';
 
     extraSessionCommands = ''
