@@ -7,7 +7,7 @@ let
 
     main() {
       # Prompt user to input the YouTube URL
-      link=$(echo "" | ${pkgs.tofi}/bin/tofi --require-match=false --prompt-text "Enter YouTube URL > ")
+      link=$(echo "" | ${pkgs.tofi}/bin/tofi --require-match=false --prompt-text "Enter YouTube URL >  ")
 
       if [[ -z "$link" ]]; then
         notify-send "Error" "No URL entered."
@@ -21,7 +21,7 @@ let
       fi
 
       # Prompt user to select video quality
-      resolution=$(echo -e "360\n480\n720\n1080" | ${pkgs.tofi}/bin/tofi --prompt-text "Select Quality > ")
+      resolution=$(echo -e "360\n480\n720\n1080" | ${pkgs.tofi}/bin/tofi --prompt-text "Select Quality >  ")
 
       if [[ -z "$resolution" ]]; then
           notify-send "Error" "No resolution selected."
