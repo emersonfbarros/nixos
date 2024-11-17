@@ -5,8 +5,8 @@
     autoEnable = true;
     base16Scheme = ../../colors/kanagawa-dragon.yaml;
     image = pkgs.fetchurl {
-      url = "https://blenderartists.org/uploads/default/original/4X/3/f/8/3f85b760b6b5dcf9e14ab35a409a19d8cc676e53.jpeg";
-      sha256 = "1s8v0k8nj5m5p21kdv850qk1xys6ylnwygy8fsdn1qnlr5bryci4";
+      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/great-wave-of-kanagawa-gruvbox.png";
+      sha256 = "sha256-ZQtVxVTXIlTi6Pv7XKy+nFczBa5dduDRc4rLRlPbzbw=";
     };
     fonts = {
       monospace = {
