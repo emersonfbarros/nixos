@@ -89,9 +89,9 @@
         "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';
 
         "${modifier}+c" = ''
-          exec ${pkgs.cliphist}/bin/cliphist list | \
-            ${pkgs.tofi}/bin/tofi --prompt-text "Clipboard:  " | \
-            ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy
+          exec ${pkgs.cliphist}/bin/cliphist list \
+          | ${pkgs.tofi}/bin/tofi --prompt-text "Clipboard:  " \
+          | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy
         '';
 
         "${modifier}+q" = "kill";
@@ -162,10 +162,10 @@
         XDG_CURRENT_DESKTOP
 
       exec hash dbus-update-activation-environment 2>/dev/null && \
-          dbus-update-activation-environment --systemd DISPLAY \
-              SWAYSOCK \
-              XDG_CURRENT_DESKTOP=sway \
-              WAYLAND_DISPLAY
+        dbus-update-activation-environment --systemd DISPLAY \
+          SWAYSOCK \
+          XDG_CURRENT_DESKTOP=sway \
+          WAYLAND_DISPLAY
     '';
 
     extraSessionCommands = ''
