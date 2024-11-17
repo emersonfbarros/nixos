@@ -32,8 +32,8 @@ in
       set -g status-right-length 80
       set -g status-left-length 80
       set -g status-left "#[fg=#${colors.base0A},bold][#S]  "        # styles session name
-      set -g window-status-current-style "fg=#${colors.base0B} bold" # current window style
-      set -g window-status-style "fg=#${colors.base04}"              # other windows style
+      set -g window-status-current-style "fg=#${colors.base04} bold" # current window style
+      set -g window-status-style "fg=#${colors.base03}"              # other windows style
       set -g status-right "#{pomodoro_status}  #[fg=#${colors.base06}]%a %b %d  %R " # right side itens
 
       # extra settings

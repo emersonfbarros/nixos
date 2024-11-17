@@ -13,10 +13,10 @@
       layer = "overlay";
       actions = true;
       font = "DejaVu Sans 10";
-      backgroundColor = "#${colors.base00}";
+      backgroundColor = "#${colors.base01}";
       textColor = "#${colors.base05}";
       borderColor = "#${colors.base02}";
-      progressColor = "#${colors.base03}";
+      progressColor = "#${colors.base0F}";
       extraConfig = ''
         on-button-left=dismiss
         on-button-middle=none
