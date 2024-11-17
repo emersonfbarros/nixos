@@ -4,7 +4,6 @@
     acpi
     jq
     libnotify
-    fastfetch
     docker-compose
     firefox
     grim
