@@ -19,7 +19,7 @@
       open_url_with = "default";
       scrollback_lines = 10000;
       cursor_blink_interval = "0.6";
-      cursor_trail = 3;
+      cursor_trail = 5;
     };
 
     shellIntegration = {

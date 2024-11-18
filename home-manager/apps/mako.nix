@@ -16,7 +16,7 @@
       backgroundColor = "#${colors.base01}";
       textColor = "#${colors.base05}";
       borderColor = "#${colors.base02}";
-      progressColor = "#${colors.base0F}";
+      progressColor = "#${colors.base0D}";
       extraConfig = ''
         on-button-left=dismiss
         on-button-middle=none
