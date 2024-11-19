@@ -8,17 +8,17 @@
 
       containers = {
         Personal = {
-          id = 0;
+          id = 1;
           color = "blue";
           icon = "fingerprint";
         };
         Professional = {
-          id = 1;
+          id = 2;
           color = "green";
           icon = "dollar";
         };
         Work = {
-          id = 2;
+          id = 3;
           color = "yellow";
           icon = "briefcase";
         };
@@ -242,6 +242,14 @@
         "browser.menu.showViewImageInfo" = true;
         "findbar.highlightAll" = true;
         "layout.word_select.eat_space_to_next_word" = false;
+
+        ### SMOOTHFOX ###
+        "apz.overscroll.enabled" = true;
+        "general.smoothScroll" = true;
+        "mousewheel.default.delta_multiplier_y" = 275;
+
+        # Disable account syncing
+        "identity.fxaccounts.enabled" = false;
       };
     };
   };
