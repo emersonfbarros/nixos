@@ -5,7 +5,6 @@
     jq
     libnotify
     docker-compose
-    firefox
     grim
     slurp
     grim

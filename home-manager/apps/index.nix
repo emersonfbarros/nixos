@@ -4,6 +4,7 @@
     ./cli-tools.nix
     ./home-style.nix
     ./htop.nix
+    ./firefox.nix
     ./kitty.nix
     ./mako.nix
     ./nvim.nix
