@@ -10,6 +10,11 @@
     };
 
     stylix.url = "github:danth/stylix";
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -37,10 +42,16 @@
 
       homeConfigurations.emerson = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
+
         modules = [
           ./home-manager/home.nix
           inputs.stylix.homeManagerModules.stylix
+
         ];
+
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
     };
 }
