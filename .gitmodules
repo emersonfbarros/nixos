@@ -1,4 +1,4 @@
 [submodule "home-manager/apps/nvim"]
 	path = home-manager/apps/nvim
-	url = git@github.com:emersonfbarros/config.nvim.git
+	url = https://github.com/emersonfbarros/config.nvim.git
 	branch = nix
