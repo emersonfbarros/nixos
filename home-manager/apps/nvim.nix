@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 {
-  home.file.".config/nvim/".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home-manager/apps/nvim";
+  home.file.".config/nvim/" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home-manager/apps/nvim";
+    recursive = true;
+  };
   home.packages = with pkgs; [
     neovim
 
@@ -42,5 +45,8 @@
     nodePackages_latest.prettier
     shfmt
     nixfmt-rfc-style
+
+    # Required for copilot chat plugin
+    lua51Packages.tiktoken_core
   ];
 }
