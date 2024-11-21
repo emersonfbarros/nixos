@@ -8,7 +8,7 @@
       enable = true;
       settings = {
         font = "JetBrainsMono NF";
-        font-size = 11;
+        font-size = 10;
 
         anchor = "top";
         width = "100%";
@@ -24,7 +24,7 @@
         padding-left = 0;
         padding-right = 0;
 
-        prompt-text = ''" Run   "'';
+        prompt-text = ''" Run  "'';
         fuzzy-match = true;
 
         background-color = "#${colors.base00}";
