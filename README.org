@@ -3,6 +3,4 @@
 
 * Emerson's NixOS config.
 
-  My NixOS config.
-
-  WIP...
+  My NixOS flake.
