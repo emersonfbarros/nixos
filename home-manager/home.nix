@@ -27,6 +27,7 @@
     PAGER = "less";
     WM = "sway";
     MANPAGER = "nvim +Man!";
+    NIXOS_OZONE_WL = "1";
   };
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
