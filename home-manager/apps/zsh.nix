@@ -134,15 +134,6 @@
           sha256 = "sha256-gvZp8P3quOtcy1Xtt1LAW1cfZ/zCtnAmnWqcwrKel6w=";
         };
       }
-      {
-        name = "zsh-completions";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-completions";
-          rev = "master";
-          sha256 = "sha256-UQ4O0Nqa92BDnKw5UV72tXJsRIs2uCoXCELsnpZN3gE=";
-        };
-      }
     ];
 
     profileExtra = ''[ "$(tty)" = "/dev/tty1" ] && exec sway'';
