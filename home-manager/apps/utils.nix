@@ -8,6 +8,7 @@
     grim
     slurp
     grim
+    google-chrome
     swappy
     playerctl
     zip
