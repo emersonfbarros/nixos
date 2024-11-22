@@ -20,6 +20,7 @@
     ./git.nix
     ./gammastep.nix
     ./waybar.nix
+    ./vscode.nix
     ./xdg.nix
   ];
 }
