@@ -17,7 +17,6 @@
       menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true";
       startup = [
         { command = "${pkgs.autotiling}/bin/autotiling"; }
-        # { command = "${pkgs.gammastep}/bin/gammastep"; }
         { command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; }
         {
           command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";
@@ -48,8 +47,18 @@
         };
       };
 
-      defaultWorkspace = "1";
+      output = {
+        HDMI-A-1 = {
+          pos = "1366 0";
+          res = "2560x1080@74.991Hz";
+        };
+        eDP-1 = {
+          pos = "0 0";
+          res = "1366x768@60.005Hz";
+        };
+      };
 
+      defaultWorkspace = "6";
       workspaceOutputAssign =
         let
           mkAssignments =
@@ -59,21 +68,8 @@
               workspace = toString ws;
             }) workspaces;
         in
-        mkAssignments "eDP-1" [
-          1
-          2
-          3
-          4
-          5
-        ]
-        ++ mkAssignments "HDMI-A-1" [
-          5
-          6
-          7
-          8
-          9
-          10
-        ];
+        mkAssignments "eDP-1" [ 1 2 3 4 5 ]
+        ++ mkAssignments "HDMI-A-1" [ 5 6 7 8 9 10 ];
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
