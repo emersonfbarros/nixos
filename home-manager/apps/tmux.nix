@@ -1,17 +1,5 @@
 { pkgs, config, ... }:
 let
-  pomodoro = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "pomodoro";
-    version = "1.0.2";
-    # version = "unstable-2024-11-09";
-    src = pkgs.fetchFromGitHub {
-      owner = "olimorris";
-      repo = "tmux-pomodoro-plus";
-      rev = "51fb321da594dab5a4baa532b53ea19b628e2822";
-      sha256 = "sha256-LjhG2+DOAtLwBspOzoI2UDTgbUFWj7vvj6TQXqWw9z0=";
-    };
-  };
-
   colors = config.lib.stylix.colors;
 in
 {
@@ -35,7 +23,7 @@ in
       set -g window-status-current-style "fg=#${colors.base04} bold" # current window style
       set -g window-status-style "fg=#${colors.base03}"              # other windows style
       set -g status-right-style "fg=#${colors.base06}"
-      set -g status-right "#{pomodoro_status}  %a %b %d  %R " # right side items
+      set -g status-right "%a %b %d  %R " # right side items
 
       # extra settings
       set -ag terminal-overrides ",xterm-256color:RGB"
@@ -78,18 +66,6 @@ in
       {
         plugin = tmuxPlugins.continuum;
         extraConfig = "set -g @continuum-restore 'on'";
-      }
-      {
-        plugin = pomodoro;
-        extraConfig = ''
-          set -g @pomodoro_notifications 'on'
-          set -g @pomodoro_sound 'on'
-          set -g @pomodoro_on "  "                       # The formatted output when the Pomodoro is running
-          set -g @pomodoro_complete " 󰸞 "                 # The formatted output when the break is running
-          set -g @pomodoro_pause " 󰏤 "                    # The formatted output when the Pomodoro/break is paused
-          set -g @pomodoro_prompt_break " ⏲︎  break?"      # The formatted output when waiting to start a break
-          set -g @pomodoro_prompt_pomodoro " ⏱︎  start?"   # The formatted output when waiting to start a Pomodoro
-        '';
       }
     ];
   };
