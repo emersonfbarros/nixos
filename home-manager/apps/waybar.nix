@@ -27,8 +27,7 @@
             "pulseaudio#output"
             "clock"
             "custom/hours"
-            "cpu"
-            "memory"
+            "group/hardware"
             "custom/battery"
             "tray"
           ];
@@ -131,22 +130,34 @@
             "format" = "{}";
           };
 
+          "group/hardware" = {
+            "orientation" = "inherit";
+            "drawer" = {
+              "transition-duration" = 500;
+            };
+            "modules" = [
+              "memory"
+              "cpu"
+              "disk"
+            ];
+          };
+
           "cpu" = {
             "interval" = 10;
-            "format" = "  {}%";
+            "format" = " {}%";
             "max-length" = 10;
           };
 
           "memory" = {
             "interval" = 20;
-            "format" = "  {}%";
+            "format" = " {}%";
             "max-length" = 7;
             "tooltip-format" = "{used:0.2f}G/{total:0.2f}G";
           };
 
           "disk" = {
             "interval" = 300;
-            "format" = "  {percentage_used}%";
+            "format" = " {percentage_used}%";
             "path" = "/";
           };
 
