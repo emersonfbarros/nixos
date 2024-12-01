@@ -15,4 +15,7 @@
       packages = [ ];
     };
   };
+
+  # doesn't work on home-manager :/
+  services.twingate.enable = true;
 }
