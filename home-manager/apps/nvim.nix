@@ -16,7 +16,7 @@
     bash-language-server
     pyright
     marksman
-    omnisharp-roslyn
+    # omnisharp-roslyn
     dockerfile-language-server-nodejs
     docker-compose-language-service
     vscode-langservers-extracted
