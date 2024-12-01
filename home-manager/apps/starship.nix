@@ -12,13 +12,15 @@
         "$hostname"
         "$directory"
         "$git_branch"
-        ''''${custom.gitparenthesis}''
         "$git_state"
         "$git_status"
+        ''''${custom.gitparenthesis}''
+        ''''${custom.closebracket}''
         "$fill"
         "$golang"
         "$rust"
         "$nodejs"
+        "$lua"
         "$python"
         "$cmd_duration"
         "$line_break"
@@ -37,7 +39,7 @@
       };
 
       directory = {
-        format = ''[($path)](blue)[\]](fg:061) '';
+        format = ''[($path)](blue)'';
         truncation_length = 3;
         truncation_symbol = ''…/'';
       };
@@ -50,11 +52,11 @@
       };
 
       git_branch = {
-        format = ''[](fg:173)[\(](fg:061)[$branch](fg:139)'';
+        format = ''''\ [](fg:209)[\(](fg:173)[$branch](fg:139)'';
       };
 
       git_status = {
-        format = ''$ahead_behind$all_status[\)](fg:061)'';
+        format = ''$ahead_behind$all_status'';
         ahead = ''''\ [⇡$count](italic green)'';
         behind = ''''\ [⇣$count](italic red)'';
         diverged = ''''\ ⇕⇡''${ahead_count}⇣''${behind_count}'';
@@ -68,9 +70,14 @@
       };
 
       custom.gitparenthesis = {
-        format = ''[$output](fg:061)'';
-        command = ''echo ")"'';
-        when = ''test $(git rev-parse --is-inside-work-tree) = "false" '';
+        format = ''[\)](fg:173)'';
+        require_repo = true;
+        when = true;
+      };
+
+      custom.closebracket = {
+        format = ''[\]](fg:061)'';
+        when = true;
       };
 
       git_state = {
