@@ -21,6 +21,7 @@
     ./gammastep.nix
     ./waybar.nix
     ./vscode.nix
+    ./nh.nix
     ./xdg.nix
   ];
 }
