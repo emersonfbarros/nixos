@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -20,6 +20,7 @@
       scrollback_lines = 10000;
       cursor_blink_interval = "0.6";
       cursor_trail = 5;
+      font_size = lib.mkForce 13;
     };
 
     shellIntegration = {
