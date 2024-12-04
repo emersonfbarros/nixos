@@ -40,70 +40,81 @@
       bindkey "^?" backward-delete-char
     '';
 
-    initExtra = ''
-      # Disable beep
-      unsetopt BEEP
+    initExtra =
+      let
+        fzf-git = pkgs.fetchFromGitHub {
+          owner = "junegunn";
+          repo = "fzf-git.sh";
+          rev = "master";
+          sha256 = "sha256-7IUCIaP2suAtrvSKvIJ/Oledm+3heZCBcTy56XgtIYo=";
+        };
+      in
+      ''
+        # Disable beep
+        unsetopt BEEP
 
-      # Additional history options
-      setopt BANG_HIST
-      setopt HIST_FIND_NO_DUPS
-      setopt HIST_SAVE_NO_DUPS
-      setopt HIST_REDUCE_BLANKS
-      setopt HIST_VERIFY
+        # Additional history options
+        setopt BANG_HIST
+        setopt HIST_FIND_NO_DUPS
+        setopt HIST_SAVE_NO_DUPS
+        setopt HIST_REDUCE_BLANKS
+        setopt HIST_VERIFY
 
-      autoload -U up-line-or-beginning-search
-      autoload -U down-line-or-beginning-search
-      zle -N up-line-or-beginning-search
-      zle -N down-line-or-beginning-search
+        autoload -U up-line-or-beginning-search
+        autoload -U down-line-or-beginning-search
+        zle -N up-line-or-beginning-search
+        zle -N down-line-or-beginning-search
 
 
-      # Other options
-      setopt AUTO_CD
-      setopt GLOB_DOTS
-      setopt NOMATCH
-      setopt MENU_COMPLETE
-      setopt EXTENDED_GLOB
-      setopt INTERACTIVE_COMMENTS
+        # Other options
+        setopt AUTO_CD
+        setopt GLOB_DOTS
+        setopt NOMATCH
+        setopt MENU_COMPLETE
+        setopt EXTENDED_GLOB
+        setopt INTERACTIVE_COMMENTS
 
-      # Highlight settings
-      zle_highlight=('paste:none')
+        # Highlight settings
+        zle_highlight=('paste:none')
 
-      # Transient prompt with starship
-      setopt prompt_subst
-      zle-line-init() {
-        emulate -L zsh
-        [[ $CONTEXT == start ]] || return 0
-        while true; do
-          zle .recursive-edit
-          local -i ret=$?
-          [[ $ret == 0 && $KEYS == $'\4' ]] || break
-          [[ -o ignore_eof ]] || exit 0
-        done
-        local saved_prompt=$PROMPT
-        local saved_rprompt=$RPROMPT
-        PROMPT="%{$fg_bold[green]%}❯ %{$reset_color%}"
-        RPROMPT=""
-        zle .reset-prompt
-        PROMPT=$saved_prompt
-        RPROMPT=$saved_rprompt
-        if (( ret )); then
-          zle .send-break
-        else
-          zle .accept-line
-        fi
-        return ret
-      }
-      zle -N zle-line-init
+        # Transient prompt with starship
+        setopt prompt_subst
+        zle-line-init() {
+          emulate -L zsh
+          [[ $CONTEXT == start ]] || return 0
+          while true; do
+            zle .recursive-edit
+            local -i ret=$?
+            [[ $ret == 0 && $KEYS == $'\4' ]] || break
+            [[ -o ignore_eof ]] || exit 0
+          done
+          local saved_prompt=$PROMPT
+          local saved_rprompt=$RPROMPT
+          PROMPT="%{$fg_bold[green]%}❯ %{$reset_color%}"
+          RPROMPT=""
+          zle .reset-prompt
+          PROMPT=$saved_prompt
+          RPROMPT=$saved_rprompt
+          if (( ret )); then
+            zle .send-break
+          else
+            zle .accept-line
+          fi
+          return ret
+        }
+        zle -N zle-line-init
 
-      # Precmd for newline before prompt
-      precmd() {
-        if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
-            NEW_LINE_BEFORE_PROMPT=1
-        elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
-            echo ""
-        fi
-      }
-    '';
+        # Precmd for newline before prompt
+        precmd() {
+          if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
+              NEW_LINE_BEFORE_PROMPT=1
+          elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+              echo ""
+          fi
+        }
+
+        source ${fzf-git}/fzf-git.sh
+      '';
 
     completionInit = ''
       autoload -Uz compinit
