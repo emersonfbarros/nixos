@@ -65,7 +65,6 @@
                       inherit mountOptions;
                     };
                   };
-                  mountpoint = "/";
                 };
               };
           };
