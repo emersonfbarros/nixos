@@ -13,6 +13,4 @@
   security.pam.services.swaylock = { };
 
   programs.dconf.enable = true;
-
-  hardware.graphics.enable = true;
 }

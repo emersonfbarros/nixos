@@ -10,5 +10,6 @@
     ./system-style.nix
     ./user.nix
     ./docker.nix
+    ./nvidia.nix
   ];
 }
