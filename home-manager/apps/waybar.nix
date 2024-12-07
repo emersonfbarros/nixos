@@ -113,8 +113,6 @@
             };
             "actions" = {
               "on-click-right" = "mode";
-              # "on-scroll-up"= "tz_up";
-              # "on-scroll-down"= "tz_down";
               "on-scroll-up" = "shift_up";
               "on-scroll-down" = "shift_down";
             };
@@ -149,8 +147,8 @@
           };
 
           "memory" = {
-            "interval" = 20;
-            "format" = " {}%";
+            "interval" = 10;
+            "format" = "  {}%";
             "max-length" = 7;
             "tooltip-format" = "{used:0.2f}G/{total:0.2f}G";
           };
