@@ -39,7 +39,7 @@
           xkb_layout = "us,br";
           xkb_options = "grp:alt_shift_toggle";
         };
-        "1739:32402:DELL0767:00_06CB:7E92_Touchpad" = {
+        "1267:12717:ELAN0001:00_04F3:31AD_Touchpad" = {
           dwt = "enabled";
           tap = "enabled";
           natural_scroll = "enabled";
@@ -49,12 +49,12 @@
 
       output = {
         HDMI-A-1 = {
-          pos = "1366 0";
+          pos = "1920 0";
           res = "2560x1080@74.991Hz";
         };
         eDP-1 = {
           pos = "0 0";
-          res = "1366x768@60.005Hz";
+          res = "1920x1080@60.051Hz";
         };
       };
 
