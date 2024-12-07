@@ -5,7 +5,6 @@
     ./home-style.nix
     ./htop.nix
     ./firefox.nix
-    ./games.nix
     ./kitty.nix
     ./mako.nix
     ./nvim.nix
