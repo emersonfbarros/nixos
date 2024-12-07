@@ -8,7 +8,15 @@
   modulesPath,
   ...
 }:
-
+let
+  subvolOptions = [
+    "compress=zstd:1"
+    "noatime"
+    "ssd"
+    "discard=async"
+    "space_cache=v2"
+  ];
+in
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -17,29 +25,23 @@
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "ahci"
+    "nvme"
+    "usbhid"
     "usb_storage"
     "sd_mod"
-    "rtsx_usb_sdmmc"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/505a5785-e016-45de-b60f-76b1656e575c";
+    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
     fsType = "btrfs";
-    options = [
-      "subvol=@"
-      "compress=zstd:1"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-    ];
+    options = [ "subvol=@" ] ++ subvolOptions;
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/4836-23F8";
+    device = "/dev/disk/by-uuid/22A6-0C30";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -48,81 +50,39 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/505a5785-e016-45de-b60f-76b1656e575c";
+    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
     fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "compress=zstd:1"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-    ];
+    options = [ "subvol=@home" ] ++ subvolOptions;
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/505a5785-e016-45de-b60f-76b1656e575c";
+    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
     fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "compress=zstd:1"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-    ];
+    options = [ "subvol=@nix" ] ++ subvolOptions;
   };
 
   fileSystems."/tmp" = {
-    device = "/dev/disk/by-uuid/505a5785-e016-45de-b60f-76b1656e575c";
+    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
     fsType = "btrfs";
-    options = [
-      "subvol=@tmp"
-      "compress=zstd:1"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-    ];
+    options = [ "subvol=@tmp" ] ++ subvolOptions;
   };
 
   fileSystems."/var/cache" = {
-    device = "/dev/disk/by-uuid/505a5785-e016-45de-b60f-76b1656e575c";
+    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
     fsType = "btrfs";
-    options = [
-      "subvol=@cache"
-      "compress=zstd:1"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-    ];
+    options = [ "subvol=@cache" ] ++ subvolOptions;
   };
 
   fileSystems."/var/lib/docker" = {
-    device = "/dev/disk/by-uuid/505a5785-e016-45de-b60f-76b1656e575c";
+    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
     fsType = "btrfs";
-    options = [
-      "subvol=@docker"
-      "compress=zstd:1"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-    ];
+    options = [ "subvol=@docker" ] ++ subvolOptions;
   };
 
   fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/505a5785-e016-45de-b60f-76b1656e575c";
+    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
     fsType = "btrfs";
-    options = [
-      "subvol=@log"
-      "compress=zstd:1"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-    ];
+    options = [ "subvol=@log" ] ++ subvolOptions;
   };
 
   swapDevices = [ ];
@@ -133,7 +93,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
