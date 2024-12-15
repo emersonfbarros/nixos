@@ -27,8 +27,8 @@
             "pulseaudio#output"
             "clock"
             "custom/hours"
+            "battery"
             "group/hardware"
-            "custom/battery"
             "tray"
           ];
 
@@ -159,26 +159,17 @@
             "path" = "/";
           };
 
-          "custom/battery" = {
-            "interval" = 30;
-            "exec" = pkgs.writeShellScript "battery" ''
-              battery_info=$(upower -i "/org/freedesktop/UPower/devices/battery_BAT1")
-              is_charging=$(echo "$battery_info" | grep state | awk '{print $2}')
-
-              if [[ "$is_charging" == "charging" ]]; then
-                icons=("󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅")
-              else
-                icons=("󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹")
-              fi
-
-              charged_value=$(echo "$battery_info" | grep percentage | awk '{print $2}')
-
-              index=''${charged_value::-2}
-
-              echo "''${icons[$index]} $charged_value"
-            '';
-            "format" = "{}";
+          "battery" = {
+            states = {
+              warning = 30;
+              critical = 10;
+            };
+            format = "{icon} {capacity}%";
+            format-charging = "{icon}󰚥 {capacity}%";
+            format-alt = "{time} {icon}";
+            format-icons = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           };
+
         };
       };
 
