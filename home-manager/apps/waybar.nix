@@ -23,12 +23,11 @@
           modules-center = [ ];
           modules-right = [
             "sway/language"
-            "pulseaudio#input"
-            "pulseaudio#output"
-            "clock"
-            "custom/hours"
+            "group/mediaio"
             "battery"
             "group/hardware"
+            "custom/hours"
+            "clock"
             "tray"
           ];
 
@@ -44,7 +43,7 @@
           };
 
           "custom/scratch" = {
-            "interval" = 3;
+            "interval" = 5;
             "exec" = ''
               swaymsg -t get_tree \
               | jq 'recurse(.nodes[]) | first(select(.name=="__i3_scratch")) | .floating_nodes | length | select(. >= 0)';
@@ -63,33 +62,46 @@
             "format" = "  {short} {variant}";
           };
 
+          "group/mediaio" = {
+            "orientation" = "inherit";
+            "drawer" = {
+              "transition-duration" = 500;
+            };
+            "modules" = [
+              "pulseaudio#output"
+              "pulseaudio#input"
+            ];
+          };
+
           "pulseaudio#input" = {
             "format-source" = "󰍬 {volume}%";
-            "format-source-muted" = "󰍭 Mute";
+            "format-source-muted" = "󰍭";
             "format" = "{format_source}";
             "scroll-step" = 1;
             "smooth-scrolling-threshold" = 1;
-            "on-click" = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-            "on-click-right" = "pavucontrol -t 4";
+            "on-click" = "pavucontrol -t 4";
+            "on-click-right" = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
             "on-scroll-up" = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%+";
             "on-scroll-down" = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%-";
           };
 
           "pulseaudio#output" = {
             "format" = "{icon} {volume}%";
-            "format-muted" = "󰝟 Mute";
+            "format-bluetooth" = "{icon} {volume}%";
+            "format-muted" = "󰝟";
             "format-icons" = {
-              "default" = [
-                "󰕿"
-                "󰖀"
-                "󰕾"
-              ];
+              "default" = [ "󰕿" "󰖀" "󰕾" ];
+              "headphones" = "";
+              "headset" = "󰋎";
+              "phone" = "";
+              "portable" = "";
+              "car" = "";
             };
             "max-volume" = 130;
             "scroll-step" = 2;
             "smooth-scrolling-threshold" = 1;
-            "on-click" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-            "on-click-right" = "pavucontrol -t 3";
+            "on-click" = "pavucontrol -t 3";
+            "on-click-right" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             "on-scroll-up" = "wpctl set-volume -l 1.3 @DEFAULT_AUDIO_SINK@ 5%+";
             "on-scroll-down" = "wpctl set-volume -l 1.3 @DEFAULT_AUDIO_SINK@ 5%-";
           };
@@ -176,7 +188,7 @@
       style = ''
         * {
           font-family: "JetBrainsMono NF";
-          font-size: 13.5px;
+          font-size: 14px;
           min-height: 0;
           margin: 0;
           padding: 0;
@@ -242,6 +254,7 @@
         #pulseaudio.output,
         #custom-hours,
         #custom-battery,
+        #battery,
         #cpu,
         #memory,
         #disk {
