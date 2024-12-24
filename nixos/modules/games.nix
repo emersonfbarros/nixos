@@ -1,3 +1,4 @@
+# As it envolves nvidia specific configurations it be imported directly in the configuration.nix of the host with nvidia card
 { lib, pkgs, ... }:
 {
   hardware.graphics = {
@@ -50,7 +51,7 @@
 
   environment.systemPackages = with pkgs; [
     mangohud
-    protonup
+    protonup # must run `protonup` command after installation
     heroic
   ];
 
