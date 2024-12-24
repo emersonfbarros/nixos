@@ -10,6 +10,5 @@
     ./system-style.nix
     ./user.nix
     ./docker.nix
-    ./games.nix
   ];
 }
