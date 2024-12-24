@@ -12,7 +12,7 @@
       maxIconSize = 48;
       layer = "overlay";
       actions = true;
-      font = "DejaVu Sans 10";
+      font = "Noto Sans 10";
       backgroundColor = "#${colors.base01}";
       textColor = "#${colors.base05}";
       borderColor = "#${colors.base02}";

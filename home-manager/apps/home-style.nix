@@ -5,8 +5,13 @@
     autoEnable = true;
     base16Scheme = ../../colors/kanagawa-dragon.yaml;
     image = pkgs.fetchurl {
-      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/great-wave-of-kanagawa-gruvbox.png";
-      sha256 = "sha256-ZQtVxVTXIlTi6Pv7XKy+nFczBa5dduDRc4rLRlPbzbw=";
+      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/gruv-understand.png";
+      sha256 = "13hn21109vcwp55r18vwcccjqmslcmv5vqmw0vx75afnacjzq481";
+    };
+    cursor = {
+      name = "DMZ-Black";
+      size = 24;
+      package = pkgs.vanilla-dmz;
     };
     fonts = {
       monospace = {
@@ -14,16 +19,22 @@
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        name = "Noto Sans";
+        package = pkgs.noto-fonts;
       };
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
+        name = "Noto Serif";
+        package = pkgs.noto-fonts;
       };
+
       emoji = {
         package = pkgs.noto-fonts-emoji-blob-bin;
         name = "Noto Color Emoji";
+      };
+
+      sizes = {
+        terminal = 13;
+        applications = 11;
       };
     };
     polarity = "dark";
