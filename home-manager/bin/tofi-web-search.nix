@@ -1,27 +1,29 @@
-{ pkgs, ... }:
+{ pkgs, homeStateVersion, ... }:
 let
   webSearchScript = pkgs.writeShellScriptBin "tofi-web-search" ''
     declare -A URLS
     URLS=(
-      ["google"]="https://www.google.com/search?q="
-      ["bing"]="https://www.bing.com/search?q="
-      ["duckduckgo"]="https://www.duckduckgo.com/?q="
-      ["yandex"]="https://yandex.ru/yandsearch?text="
-      ["github"]="https://github.com/search?q="
-      ["goodreads"]="https://www.goodreads.com/search?q="
-      ["stackoverflow"]="http://stackoverflow.com/search?q="
-      ["symbolhound"]="http://symbolhound.com/?q="
-      ["searchcode"]="https://searchcode.com/?q="
-      ["openhub"]="https://www.openhub.net/p?ref=homepage&query="
-      ["superuser"]="http://superuser.com/search?q="
-      ["askubuntu"]="http://askubuntu.com/search?q="
-      ["imdb"]="http://www.imdb.com/find?ref_=nv_sr_fn&q="
-      ["rottentomatoes"]="https://www.rottentomatoes.com/search/?search="
-      ["youtube"]="https://www.youtube.com/results?search_query="
-      ["vimawesome"]="http://vimawesome.com/?q="
-      ["rarbg"]="https://proxyrarbg.org/torrents.php?search="
-      ["nyaa"]="https://nyaa.si/?f=0&c=0_0&q="
-      ["genius"]="https://genius.com/search?q="
+      ["Google"]="https://www.google.com/search?q="
+      ["Bing"]="https://www.bing.com/search?q="
+      ["Duckduckgo"]="https://www.duckduckgo.com/?q="
+      ["Yandex"]="https://yandex.ru/yandsearch?text="
+      ["Github"]="https://github.com/search?q="
+      ["Goodreads"]="https://www.goodreads.com/search?q="
+      ["Stackoverflow"]="http://stackoverflow.com/search?q="
+      ["Symbolhound"]="http://symbolhound.com/?q="
+      ["Searchcode"]="https://searchcode.com/?q="
+      ["Openhub"]="https://www.openhub.net/p?ref=homepage&query="
+      ["Superuser"]="http://superuser.com/search?q="
+      ["Askubuntu"]="http://askubuntu.com/search?q="
+      ["Imdb"]="http://www.imdb.com/find?ref_=nv_sr_fn&q="
+      ["Rottentomatoes"]="https://www.rottentomatoes.com/search/?search="
+      ["Youtube"]="https://www.youtube.com/results?search_query="
+      ["Vimawesome"]="http://vimawesome.com/?q="
+      ["Rarbg"]="https://proxyrarbg.org/torrents.php?search="
+      ["Nyaa"]="https://nyaa.si/?f=0&c=0_0&q="
+      ["Genius"]="https://genius.com/search?q="
+      "[MyNixOS]=https://mynixos.com/search?q="
+      "[Nixpkgs]=https://search.nixos.org/packages?channel=${homeStateVersion}&from=0&size=50&sort=relevance&type=packages&query="
     )
 
     # List for rofi
@@ -33,7 +35,7 @@ let
 
     main() {
       # Pass the list to rofi
-      platform=$( (gen_list) | ${pkgs.tofi}/bin/tofi --prompt-text "Search >")
+      platform=$( (gen_list) | ${pkgs.tofi}/bin/tofi --prompt-text "Search >  ")
 
       if [[ -n "$platform" ]]; then
         query=$(echo "" | ${pkgs.tofi}/bin/tofi --require-match=false --prompt-text "$platform >  ")
