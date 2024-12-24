@@ -206,7 +206,7 @@
           betterFoxUserJs = builtins.readFile (
             builtins.fetchurl {
               url = "https://raw.githubusercontent.com/yokoffing/Betterfox/main/user.js";
-              sha256 = "sha256:1ghh8hpkh7q5q5bss4yd0xf7gakw6zh9ips5rc3g25sb6rsmdfij";
+              sha256 = "sha256:1fr0ia7zjszy31sdp05h746b88761wswrwr61zw7hvn1a8dkvhaw";
             }
           );
         in
