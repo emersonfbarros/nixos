@@ -23,7 +23,6 @@
     spotify
     yt-dlp
     networkmanagerapplet
-    zathura
   ];
 
   services.blueman-applet.enable = true;
