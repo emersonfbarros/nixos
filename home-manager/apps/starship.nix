@@ -57,9 +57,9 @@
 
       git_status = {
         format = ''$ahead_behind$all_status'';
-        ahead = ''''\ [⇡$count](italic green)'';
-        behind = ''''\ [⇣$count](italic red)'';
-        diverged = ''''\ ⇕⇡''${ahead_count}⇣''${behind_count}'';
+        ahead = ''''\ [↑$count](italic green)'';
+        behind = ''''\ [↓$count](italic red)'';
+        diverged = ''''\ ↕''${ahead_count}''${behind_count}'';
         conflicted = ''''\ [~$count](italic bright-magenta)'';
         untracked = ''''\ [?$count](italic bright-yellow)'';
         stashed = ''''\ [≡$count](italic bright-black)'';
