@@ -11,12 +11,12 @@
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        name = "Noto Sans";
+        package = pkgs.noto-fonts;
       };
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
+        name = "Noto Serif";
+        package = pkgs.noto-fonts;
       };
       emoji = {
         package = pkgs.noto-fonts-emoji-blob-bin;
