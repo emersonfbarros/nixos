@@ -20,38 +20,60 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      lib = nixpkgs.lib;
       system = "x86_64-linux";
+      version = "24.11";
+
+      homeStateVersion = version;
+      user = "emerson";
+      hosts = [
+        {
+          hostname = "regulus";
+          stateVersion = version;
+        }
+        {
+          hostname = "ilias";
+          stateVersion = version;
+        }
+      ];
+
+      makeSystem =
+        { hostname, stateVersion }:
+        nixpkgs.lib.nixosSystem {
+          system = system;
+          specialArgs = {
+            inherit
+              inputs
+              stateVersion
+              hostname
+              user
+              ;
+          };
+
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+          ];
+        };
     in
     {
-      nixosConfigurations.nixos = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./nixos/configuration.nix
-          inputs.stylix.nixosModules.stylix
-          # To nixd find <nixpkgs>
-          {
-            nix.nixPath = [
-              "nixpkgs=${inputs.nixpkgs}"
-              # Add home-manager to nixPath if you want nixd to understand HM options
-              "home-manager=${inputs.home-manager}"
-            ];
-          }
-        ];
-      };
+      nixosConfigurations = nixpkgs.lib.foldl' (
+        configs: host:
+        configs
+        // {
+          "${host.hostname}" = makeSystem {
+            inherit (host) hostname stateVersion;
+          };
+        }
+      ) { } hosts;
 
-      homeConfigurations.emerson = inputs.home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${user} = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {
+          inherit inputs homeStateVersion user;
+        };
 
         modules = [
           ./home-manager/home.nix
-          inputs.stylix.homeManagerModules.stylix
-
         ];
-
-        extraSpecialArgs = {
-          inherit inputs;
-        };
       };
     };
 }
