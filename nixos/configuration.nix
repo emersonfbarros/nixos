@@ -2,7 +2,7 @@
   imports = [
     # Include the results of the hardware scan and my modules
     ./hardware-configuration.nix
-    ./modules/index.nix
+    ./modules
   ];
 
   # Define machine hostname (creative, don't you think?)
