@@ -1,9 +1,9 @@
-{ inputs, ... }:
+{ inputs, user, ... }:
 {
   programs.firefox = {
     enable = true;
 
-    profiles.emerson = {
+    profiles.${user} = {
       isDefault = true;
 
       containers = {
