@@ -11,7 +11,7 @@
     gopls
     taplo
     rust-analyzer
-    typescript-language-server
+    vtsls
     lua-language-server
     bash-language-server
     pyright
@@ -19,7 +19,7 @@
     # omnisharp-roslyn
     dockerfile-language-server-nodejs
     docker-compose-language-service
-    vscode-langservers-extracted
+    vscode-langservers-extracted # eslint, html, jsonls, cssls
     nixd
 
     # DAPs
@@ -32,9 +32,8 @@
     clippy
     buf
     biome
-    eslint
     shellcheck
-    markdownlint-cli
+    markdownlint-cli2
 
     # Formatters
     gofumpt
