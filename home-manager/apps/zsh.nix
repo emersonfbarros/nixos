@@ -46,7 +46,7 @@
           owner = "junegunn";
           repo = "fzf-git.sh";
           rev = "master";
-          sha256 = "sha256-7IUCIaP2suAtrvSKvIJ/Oledm+3heZCBcTy56XgtIYo=";
+          sha256 = "sha256-njfIB6KdgIh6VhY3AAla8KvqN8V0WIUqf4c1mB1wTvI=";
         };
       in
       ''
