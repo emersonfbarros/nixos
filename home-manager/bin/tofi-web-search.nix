@@ -22,8 +22,8 @@ let
       ["Rarbg"]="https://proxyrarbg.org/torrents.php?search="
       ["Nyaa"]="https://nyaa.si/?f=0&c=0_0&q="
       ["Genius"]="https://genius.com/search?q="
-      "[MyNixOS]=https://mynixos.com/search?q="
-      "[Nixpkgs]=https://search.nixos.org/packages?channel=${homeStateVersion}&from=0&size=50&sort=relevance&type=packages&query="
+      ["MyNixOS"]="https://mynixos.com/search?q="
+      ["Nixpkgs"]="https://search.nixos.org/packages?channel=${homeStateVersion}&from=0&size=50&sort=relevance&type=packages&query="
     )
 
     # List for rofi
