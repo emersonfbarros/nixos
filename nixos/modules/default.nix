@@ -2,6 +2,7 @@
   imports = [
     ./bluetooth.nix
     ./bootloader.nix
+    ./garbage-collector.nix
     ./locale.nix
     ./network.nix
     ./sound.nix
