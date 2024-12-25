@@ -13,7 +13,4 @@
       ];
     };
   };
-
-  # doesn't work on home-manager :/
-  environment.systemPackages = [ pkgs.twingate ];
 }
