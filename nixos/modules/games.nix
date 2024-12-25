@@ -1,10 +1,8 @@
 # As it envolves nvidia specific configurations it be imported directly in the configuration.nix of the host with nvidia card
 { lib, pkgs, ... }:
 {
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+# Needed for proton/wine
+  hardware.graphics.enable32Bit = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
