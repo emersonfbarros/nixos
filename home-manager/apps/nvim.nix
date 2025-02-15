@@ -16,7 +16,6 @@
     marksman
     nixd
     pyright
-    tailwindcss-language-server
     taplo
     vscode-langservers-extracted # eslint, html, jsonls, cssls
     vtsls
@@ -29,13 +28,16 @@
     # Linters
     biome
     buf
+    checkmake
+    commitlint
+    editorconfig-checker
     golangci-lint
     golangci-lint-langserver
+    hadolint
     shellcheck
+    statix
 
     # Formatters
-    gofumpt
-    goimports-reviser
     golines
     nixfmt-rfc-style
     nodePackages_latest.prettier
@@ -45,17 +47,12 @@
     # Required for copilot chat plugin
     lua51Packages.tiktoken_core
 
-    neovim-node-client
-
+    # extra go tools
+    gotools # oficial go tools for development
+    go-tools # static check
     gomodifytags
-    impl
-    iferr
-    statix
-    checkmake
-    go-tools
-    commitlint
-    editorconfig-checker
-    hadolint
     govulncheck
+    iferr
+    impl
   ];
 }
