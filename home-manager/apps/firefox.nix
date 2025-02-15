@@ -62,10 +62,6 @@
               url = "https://slack.com";
             }
             {
-              name = "Jira";
-              url = "https://klever-io.atlassian.net/jira/software/c/projects/KLC/boards/78";
-            }
-            {
               name = "Pomodor";
               url = "https://pomodor.app";
             }
