@@ -38,11 +38,9 @@
           fi
         '';
 
-        RUSTFLAGS = (
-          builtins.map (a: ''-L ${a}/lib'') [
-            pkgs.openssl
-          ]
-        );
+        RUSTFLAGS = builtins.map (a: ''-L ${a}/lib'') [
+          pkgs.openssl
+        ];
 
         LD_LIBRARY_PATH = libPath;
 

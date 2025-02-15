@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  colors = config.lib.stylix.colors;
+  inherit (config.lib.stylix) colors;
 
   workspace-usage = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "workspace_usage";

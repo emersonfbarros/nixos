@@ -2,7 +2,7 @@
 {
   programs.waybar =
     let
-      colors = config.lib.stylix.colors;
+      inherit (config.lib.stylix) colors;
     in
     {
       enable = true;
@@ -181,7 +181,6 @@
             format-alt = "{time} {icon}";
             format-icons = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           };
-
         };
       };
 

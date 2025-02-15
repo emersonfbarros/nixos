@@ -64,7 +64,7 @@
           mkAssignments =
             output: workspaces:
             map (ws: {
-              output = output;
+              inherit output;
               workspace = toString ws;
             }) workspaces;
         in

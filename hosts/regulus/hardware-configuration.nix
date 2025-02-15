@@ -27,62 +27,60 @@ in
     "ahci"
     "nvme"
     "usbhid"
-    "usb_storage"
-    "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
+    device = "/dev/disk/by-uuid/456af7a2-73fb-473f-b512-ccf1aa424504";
     fsType = "btrfs";
     options = [ "subvol=@" ] ++ subvolOptions;
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/22A6-0C30";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
-    fsType = "btrfs";
-    options = [ "subvol=@home" ] ++ subvolOptions;
-  };
-
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
+    device = "/dev/disk/by-uuid/456af7a2-73fb-473f-b512-ccf1aa424504";
     fsType = "btrfs";
     options = [ "subvol=@nix" ] ++ subvolOptions;
   };
 
+  fileSystems."/var/log" = {
+    device = "/dev/disk/by-uuid/456af7a2-73fb-473f-b512-ccf1aa424504";
+    fsType = "btrfs";
+    options = [ "subvol=@log" ] ++ subvolOptions;
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/456af7a2-73fb-473f-b512-ccf1aa424504";
+    fsType = "btrfs";
+    options = [ "subvol=@home" ] ++ subvolOptions;
+  };
+
   fileSystems."/tmp" = {
-    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
+    device = "/dev/disk/by-uuid/456af7a2-73fb-473f-b512-ccf1aa424504";
     fsType = "btrfs";
     options = [ "subvol=@tmp" ] ++ subvolOptions;
   };
 
   fileSystems."/var/cache" = {
-    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
+    device = "/dev/disk/by-uuid/456af7a2-73fb-473f-b512-ccf1aa424504";
     fsType = "btrfs";
     options = [ "subvol=@cache" ] ++ subvolOptions;
   };
 
   fileSystems."/var/lib/docker" = {
-    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
+    device = "/dev/disk/by-uuid/456af7a2-73fb-473f-b512-ccf1aa424504";
     fsType = "btrfs";
     options = [ "subvol=@docker" ] ++ subvolOptions;
   };
 
-  fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/83f84788-26a1-4357-9ccc-8cfe3eb1c50e";
-    fsType = "btrfs";
-    options = [ "subvol=@log" ] ++ subvolOptions;
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/629F-22A5";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   swapDevices = [ ];

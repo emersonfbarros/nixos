@@ -2,7 +2,7 @@
 {
   programs.tofi =
     let
-      colors = config.lib.stylix.colors;
+      inherit (config.lib.stylix) colors;
     in
     {
       enable = true;
