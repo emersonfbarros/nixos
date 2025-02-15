@@ -1,16 +1,16 @@
 {
   imports = [
+    ./chmic.nix
     ./chrb.nix
     ./chspk.nix
-    ./chmic.nix
     ./extract.nix
-    ./tofi-power.nix
-    ./zt.nix
-    ./selectfile.nix
-    ./v.nix
-    ./yt.nix
     ./kitab.nix
     ./kiwindow.nix
+    ./selectfile.nix
+    ./tofi-power.nix
     ./tofi-web-search.nix
+    ./v.nix
+    ./yt.nix
+    ./zt.nix
   ];
 }

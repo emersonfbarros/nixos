@@ -7,12 +7,12 @@
     enableUpdateCheck = false;
 
     extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
+      eamodio.gitlens
       golang.go
       rust-lang.rust-analyzer
-      vadimcn.vscode-lldb
-      eamodio.gitlens
       usernamehw.errorlens
+      vadimcn.vscode-lldb
+      vscodevim.vim
     ];
   };
 }

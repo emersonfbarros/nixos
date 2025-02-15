@@ -1,10 +1,10 @@
 { pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
-    swayidle
-    swayimg
     autotiling
     cliphist
+    swayidle
+    swayimg
     wl-clipboard
   ];
 

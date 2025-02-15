@@ -1,6 +1,6 @@
 {
   imports = [
-    ./langs.nix
     ./build.nix
+    ./langs.nix
   ];
 }

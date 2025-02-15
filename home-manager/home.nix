@@ -12,26 +12,26 @@
     stateVersion = homeStateVersion; # Please read the comment before changing.
 
     sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      SUDOEDIT = "nvim";
-      READER = "zathura";
-      TERMINAL = "kitty";
-      BROWSER = "chromium";
-      VIDEO = "mpv";
-      IMAGE = "swayimg";
+      BROWSER = "firefox";
       COLORTERM = "truecolor";
-      OPENER = "xdg-open";
-      PAGER = "less";
-      WM = "sway";
+      EDITOR = "nvim";
+      IMAGE = "swayimg";
       MANPAGER = "nvim +Man!";
       NIXOS_OZONE_WL = "1";
+      OPENER = "xdg-open";
+      PAGER = "less";
+      READER = "zathura";
+      SUDOEDIT = "nvim";
+      TERMINAL = "kitty";
+      VIDEO = "mpv";
+      VISUAL = "nvim";
+      WM = "sway";
     };
   };
 
   nixpkgs.config = {
     allowUnfree = true;
-    allowUnfreePredicate = (_: true);
+    allowUnfreePredicate = _: true;
   };
 
   # Let Home Manager install and manage itself.

@@ -35,10 +35,10 @@
 
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
-        ublock-origin
-        youtube-shorts-block
         privacy-badger
         translate-web-pages
+        ublock-origin
+        youtube-shorts-block
       ];
 
       bookmarks = [

@@ -2,28 +2,29 @@
   imports = [
     ./alacritty.nix
     ./cli-tools.nix
+    ./firefox.nix
+    ./gammastep.nix
+    ./git.nix
+    ./gpg.nix
     ./home-style.nix
     ./htop.nix
-    ./firefox.nix
     ./kitty.nix
     ./mako.nix
+    ./mpv.nix
+    ./nh.nix
     ./nvim.nix
+    ./ssh.nix
     ./starship.nix
     ./sway.nix
     ./swaylock.nix
     ./tmux.nix
     ./tofi.nix
     ./utils.nix
-    ./zsh.nix
-    ./ssh.nix
-    ./gpg.nix
-    ./git.nix
-    ./gammastep.nix
-    ./waybar.nix
     ./vscode.nix
-    ./yazi.nix
-    ./nh.nix
+    ./waybar.nix
     ./xdg.nix
+    ./yazi.nix
     ./zathura.nix
+    ./zsh.nix
   ];
 }

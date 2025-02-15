@@ -2,27 +2,25 @@
 {
   home.packages = with pkgs; [
     acpi
+    blueman
+    docker-compose
+    gh
+    google-chrome
+    grim
     jq
     libnotify
-    docker-compose
-    grim
-    slurp
-    grim
-    google-chrome
-    swappy
+    networkmanagerapplet
+    pavucontrol
     playerctl
-    zip
+    qalculate-gtk
+    slurp
+    spotify
+    swappy
+    xdg-utils
     xfce.thunar
     xfce.thunar-volman
-    qalculate-gtk
-    pavucontrol
-    blueman
-    gh
-    xdg-utils
-    mpv
-    spotify
     yt-dlp
-    networkmanagerapplet
+    zip
   ];
 
   services.blueman-applet.enable = true;

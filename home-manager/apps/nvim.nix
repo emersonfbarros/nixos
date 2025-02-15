@@ -8,19 +8,18 @@
     neovim
 
     # LSPs
-    gopls
-    taplo
-    rust-analyzer
-    vtsls
-    lua-language-server
     bash-language-server
-    pyright
-    marksman
-    # omnisharp-roslyn
-    dockerfile-language-server-nodejs
     docker-compose-language-service
-    vscode-langservers-extracted # eslint, html, jsonls, cssls
+    dockerfile-language-server-nodejs
+    gopls
+    lua-language-server
+    marksman
     nixd
+    pyright
+    tailwindcss-language-server
+    taplo
+    vscode-langservers-extracted # eslint, html, jsonls, cssls
+    vtsls
 
     # DAPs
     delve
@@ -28,24 +27,35 @@
     vscode-js-debug
 
     # Linters
-    golangci-lint
-    clippy
-    buf
     biome
+    buf
+    golangci-lint
+    golangci-lint-langserver
     shellcheck
-    markdownlint-cli2
 
     # Formatters
     gofumpt
     goimports-reviser
     golines
-    rustfmt
-    stylua
+    nixfmt-rfc-style
     nodePackages_latest.prettier
     shfmt
-    nixfmt-rfc-style
+    stylua
 
     # Required for copilot chat plugin
     lua51Packages.tiktoken_core
+
+    neovim-node-client
+
+    gomodifytags
+    impl
+    iferr
+    statix
+    checkmake
+    go-tools
+    commitlint
+    editorconfig-checker
+    hadolint
+    govulncheck
   ];
 }
