@@ -112,6 +112,14 @@
         format = ''([$symbol($version )](fg:#010080))'';
       };
 
+      nix_shell = {
+        symbol = ''󱄅 '';
+        format = ''[$symbol$state( \($name\))]($style) '';
+        slyte = ''bold blue'';
+        impure_msg = ''impure'';
+        pure_msg = ''pure'';
+      };
+
       python = {
         symbol = '' '';
         format = ''([$symbol($version )](fg:#3C77A8))'';
