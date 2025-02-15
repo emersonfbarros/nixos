@@ -50,7 +50,6 @@
   environment.systemPackages = with pkgs; [
     mangohud
     protonup # must run `protonup` command after installation
-    heroic
   ];
 
   environment.sessionVariables = {
