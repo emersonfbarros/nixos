@@ -7,16 +7,15 @@
     {
       enable = true;
       defaultTimeout = 5000;
-      padding = "15";
+      padding = "5";
       borderSize = 2;
-      maxIconSize = 48;
+      maxIconSize = 64;
       layer = "overlay";
-      actions = true;
       font = "Noto Sans 10";
       backgroundColor = "#${colors.base01}";
       textColor = "#${colors.base05}";
-      borderColor = "#${colors.base02}";
-      progressColor = "#${colors.base0D}";
+      borderColor = "#${colors.base0D}";
+      progressColor = "over #${colors.base02}";
       extraConfig = ''
         on-button-left=dismiss
         on-button-middle=none
