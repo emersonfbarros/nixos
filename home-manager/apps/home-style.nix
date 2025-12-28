@@ -1,24 +1,18 @@
 { pkgs, inputs, ... }:
 {
-  imports = [ inputs.stylix.homeManagerModules.stylix ];
+  imports = [ inputs.stylix.homeModules.stylix ];
 
   stylix = {
     enable = true;
-    autoEnable = true;
     base16Scheme = ../../colors/kanagawa-dragon.yaml;
     image = pkgs.fetchurl {
       url = "https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/gruv-understand.png";
       sha256 = "13hn21109vcwp55r18vwcccjqmslcmv5vqmw0vx75afnacjzq481";
     };
-    cursor = {
-      name = "DMZ-Black";
-      size = 24;
-      package = pkgs.vanilla-dmz;
-    };
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font Mono";
+        package = pkgs.nerd-fonts.iosevka-term;
+        name = "IosevkaTerm Nerd Font Mono";
       };
       sansSerif = {
         name = "Noto Sans";
@@ -35,8 +29,7 @@
       };
 
       sizes = {
-        terminal = 13;
-        applications = 11;
+        terminal = 12;
       };
     };
     polarity = "dark";

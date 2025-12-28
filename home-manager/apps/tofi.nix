@@ -7,7 +7,7 @@
     {
       enable = true;
       settings = {
-        font = "JetBrainsMono NF";
+        font = "IosevkaTerm NF";
         font-size = 10;
 
         anchor = "top";

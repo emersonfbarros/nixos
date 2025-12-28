@@ -186,7 +186,7 @@
 
       style = ''
         * {
-          font-family: "JetBrainsMono NF";
+          font-family: "IosevkaTerm NF";
           font-size: 14px;
           min-height: 0;
           margin: 0;

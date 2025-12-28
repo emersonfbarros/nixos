@@ -2,13 +2,12 @@
 {
   programs.git = {
     enable = true;
-    userName = "Emerson Barros";
-    userEmail = "emersonfb99@gmail.com";
-    signing = {
-      key = "5C2B1DF2F1C83884";
-      signByDefault = true;
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Emerson Barros";
+        email = "emersonfb99@gmail.com";
+      };
+
       gpg.program = "${pkgs.gnupg}/bin/gpg2";
 
       url = {
@@ -22,7 +21,10 @@
         side-by-side = true;
       };
     };
-
-    delta.enable = true;
+    signing = {
+      key = "5C2B1DF2F1C83884";
+      signByDefault = true;
+      format = "openpgp";
+    };
   };
 }

@@ -1,10 +1,10 @@
 { stateVersion, hostname, ... }:
 {
   imports = [
-    ./hardware-configuration.nix
-    ./local-packages.nix
     ../../nixos/modules
     ../../nixos/modules/games.nix
+    ./hardware-configuration.nix
+    ./local-packages.nix
   ];
 
   networking.hostName = hostname;

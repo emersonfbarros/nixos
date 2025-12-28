@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   # Add base development tools to your environment
@@ -10,9 +10,12 @@
     python3
   ];
 
-  programs.go = rec {
+  programs.go = {
     enable = true;
-    goPath = "go";
-    goBin = "${goPath}/bin";
+    env = rec {
+      GOPATH = config.home.homeDirectory + "/go";
+      GOBIN = "${GOPATH}/bin";
+    };
+    telemetry.mode = "off";
   };
 }

@@ -9,8 +9,8 @@
     base16Scheme = ../../colors/kanagawa-dragon.yaml;
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font Mono";
+        package = pkgs.nerd-fonts.iosevka-term;
+        name = "IosevkaTerm Nerd Font Mono";
       };
       sansSerif = {
         name = "Noto Sans";
@@ -25,6 +25,7 @@
         name = "Noto Color Emoji";
       };
     };
+
     polarity = "dark";
   };
 }

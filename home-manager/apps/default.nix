@@ -13,6 +13,7 @@
     ./mpv.nix
     ./nh.nix
     ./nvim.nix
+    ./obsidian.nix
     ./ssh.nix
     ./starship.nix
     ./sway.nix

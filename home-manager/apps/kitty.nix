@@ -3,9 +3,15 @@
   programs.kitty = {
     enable = true;
     settings = {
+      font_family = ''"family='IosevkaTerm Nerd Font Mono'"'';
+      bold_font = "auto";
+      italic_font = "auto";
+      bold_italic_font = "auto";
+
       allow_remote_control = "yes";
       enabled_layouts = "stack,tall";
       active_tab_font_style = "normal";
+      font_size = 12;
       inactive_tab_font_style = "normal";
       tab_bar_edge = "top";
       tab_bar_style = "custom";
@@ -15,8 +21,8 @@
       cursor_shape = "block";
       select_by_word_characters = "@-./_~?&=%+#";
       repaint_delay = 10;
-      term = "xterm-kitty";
       open_url_with = "default";
+      term = "xterm-kitty";
       scrollback_lines = 10000;
       cursor_blink_interval = "0.6";
       cursor_trail = 5;

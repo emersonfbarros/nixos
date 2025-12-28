@@ -14,7 +14,6 @@
     playerctl
     qalculate-gtk
     slurp
-    spotify
     swappy
     xdg-utils
     xfce.thunar

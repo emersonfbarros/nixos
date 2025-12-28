@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
@@ -13,15 +18,18 @@
     };
 
     history = {
+      append = true;
       expireDuplicatesFirst = true;
       extended = true;
-      ignoreDups = true;
+      findNoDups = true;
       ignoreAllDups = true;
+      saveNoDups = true;
+      ignoreDups = true;
       ignoreSpace = true;
+      path = config.home.homeDirectory + "/.zsh_history";
       save = 50000;
-      size = 50000;
       share = true;
-      path = "$HOME/.zsh_history";
+      size = 50000;
     };
 
     historySubstringSearch = {
@@ -30,33 +38,26 @@
       searchDownKey = "^[[B";
     };
 
-    initExtraFirst = ''
-      # Load colors
-      autoload -Uz colors && colors
+    initContent = lib.mkMerge [
+      (lib.mkBefore ''
+        # Load colors
+        autoload -Uz colors && colors
 
-      bindkey -s '^x' '^usource $HOME/.zshrc\n'
-      bindkey "^R" history-incremental-search-backward
-      bindkey '^H' backward-kill-word # Ctrl + Backspace to delete a whole word.
-      bindkey "^?" backward-delete-char
-    '';
+        bindkey -s '^x' '^usource $HOME/.zshrc\n'
+        bindkey "^R" history-incremental-search-backward
+        bindkey '^H' backward-kill-word # Ctrl + Backspace to delete a whole word.
+        bindkey "^?" backward-delete-char
 
-    initExtra =
-      let
-        fzf-git = pkgs.fetchFromGitHub {
-          owner = "junegunn";
-          repo = "fzf-git.sh";
-          rev = "master";
-          sha256 = "sha256-njfIB6KdgIh6VhY3AAla8KvqN8V0WIUqf4c1mB1wTvI=";
-        };
-      in
-      ''
+        zvm_after_init_commands+=(
+          # eval "$(fzf --zsh)"
+        )
+      '')
+      (lib.mkAfter ''
         # Disable beep
         unsetopt BEEP
 
         # Additional history options
         setopt BANG_HIST
-        setopt HIST_FIND_NO_DUPS
-        setopt HIST_SAVE_NO_DUPS
         setopt HIST_REDUCE_BLANKS
         setopt HIST_VERIFY
 
@@ -64,7 +65,6 @@
         autoload -U down-line-or-beginning-search
         zle -N up-line-or-beginning-search
         zle -N down-line-or-beginning-search
-
 
         # Other options
         setopt AUTO_CD
@@ -80,6 +80,9 @@
         # Transient prompt with starship
         setopt prompt_subst
         zle-line-init() {
+          zle -K viins
+          echo -ne '\e[6 q' # beam
+
           emulate -L zsh
           [[ $CONTEXT == start ]] || return 0
           while true; do
@@ -113,8 +116,40 @@
           fi
         }
 
-        source ${fzf-git}/fzf-git.sh
-      '';
+        # Editing commands inside neovim
+        bindkey -v # Enable vi keybings
+        export KEYTIMEOUT=1
+        export VI_MODE_SET_CURSOR=true
+
+        autoload -Uz edit-command-line
+        zle -N edit-command-line
+        bindkey -M vicmd 'v' edit-command-line
+
+        function zle-keymap-select {
+          if [[ ''${KEYMAP} == vicmd ]]; then
+            echo -ne '\e[2 q' # block
+          else
+            echo -ne '\e[6 q' # beam
+          fi
+        }
+        zle -N zle-keymap-select
+
+        # Yank to system clipboard
+        function vi-yank-clipboard {
+          zle vi-yank
+          if command -v pbcopy &> /dev/null; then
+            echo "$CUTBUFFER" | pbcopy -i
+          elif command -v wl-copy &> /dev/null; then
+            echo "$CUTBUFFER" | wl-copy
+          fi
+        }
+        zle -N vi-yank-clipboard
+        bindkey -M vicmd 'y' vi-yank-clipboard
+
+        export PATH="$HOME/.local/bin:$PATH"
+        export PATH="$HOME/.npm-global/bin:$PATH"
+      '')
+    ];
 
     completionInit = ''
       autoload -Uz compinit
@@ -132,18 +167,16 @@
     '';
 
     # Plugins
-    enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     plugins = [
+      #   {
+      #     name = "zsh-vi-mode";
+      #     src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
+      #   }
       {
         name = "fzf-tab";
-        src = pkgs.fetchFromGitHub {
-          owner = "Aloxaf";
-          repo = "fzf-tab";
-          rev = "master";
-          sha256 = "sha256-gvZp8P3quOtcy1Xtt1LAW1cfZ/zCtnAmnWqcwrKel6w=";
-        };
+        src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
       }
     ];
 

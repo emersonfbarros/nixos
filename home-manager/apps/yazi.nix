@@ -5,11 +5,9 @@
       enableZshIntegration = true;
 
       settings = {
-        manager = {
-          ratio = [ 1 3 4 ];
-        };
         preview = {
-          image_filter = "catmull-rom";
+          max_width = 1200;
+          max_height = 1000;
         };
       };
     };
