@@ -4,12 +4,13 @@
     unstable = false;
   };
 
-  # Server gets NixOS core (packages.nix includes tmux)
-  # No additional config needed - default tmux settings are fine for server
   flake.modules.nixos.host_ilias = {
     imports = with config.flake.modules.nixos; [
-      podman
+      graphics
       neovim-minimal
+      media-server
+      podman
+      sound
       ssh
     ];
 

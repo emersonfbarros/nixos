@@ -26,7 +26,6 @@
           ripgrep
           fd
           unzip
-          xclip
           wl-clipboard
         ];
       };

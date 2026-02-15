@@ -12,8 +12,9 @@
           uid = 1000;
           extraGroups = [
             "networkmanager"
-            "wheel"
             "seat"
+            "video"
+            "wheel"
           ];
         };
       };

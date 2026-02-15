@@ -70,8 +70,21 @@
                   workspace = toString ws;
                 }) workspaces;
             in
-            mkAssignments "eDP-1" [ 1 2 3 4 5 ]
-            ++ mkAssignments "HDMI-A-1" [ 5 6 7 8 9 10 ];
+            mkAssignments "eDP-1" [
+              1
+              2
+              3
+              4
+              5
+            ]
+            ++ mkAssignments "HDMI-A-1" [
+              5
+              6
+              7
+              8
+              9
+              10
+            ];
 
           keybindings = lib.mkOptionDefault {
             "${modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
