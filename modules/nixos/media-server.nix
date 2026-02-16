@@ -20,17 +20,17 @@
     # Open firewall ports for Local Network Access
     networking.firewall = {
       allowedTCPPorts = [
-        8096 # Jellyfin HTTP
-        8920 # Jellyfin HTTPS
-        8180 # qBittorrent WebUI
-        8989 # Sonarr
-        7878 # Radarr
         9696 # Prowlarr
+        7878 # Radarr
+        8989 # Sonarr
+        8191 # ByParr (Flaresolverr alternative)
+        8180 # qBittorrent WebUI
         6767 # Bazarr
         5055 # Jellyseerr
+        8096 # Jellyfin HTTP
+        8920 # Jellyfin HTTPS
         4080 # Heimdall HTTP
         40443 # Heimdall HTTPS
-        8191 # ByParr (Flaresolverr alternative)
       ];
       allowedUDPPorts = [
         1900 # Jellyfin DLNA
@@ -43,6 +43,8 @@
       # Media directories
       "d /media/servarr           0775 media media -"
       "d /media/servarr/downloads 0775 media media -"
+      "d /media/servarr/tv        0775 media media -"
+      "d /media/servarr/movies    0775 media media -"
 
       # Service configuration directories
       "d /srv/qbittorrent         0775 media media -"
