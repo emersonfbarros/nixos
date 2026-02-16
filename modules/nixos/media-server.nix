@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   flake.modules.nixos.media-server = {
 
@@ -32,6 +30,7 @@
         5055 # Jellyseerr
         4080 # Heimdall HTTP
         40443 # Heimdall HTTPS
+        8191 # ByParr (Flaresolverr alternative)
       ];
       allowedUDPPorts = [
         1900 # Jellyfin DLNA
@@ -74,24 +73,11 @@
           };
         in
         {
-          qbittorrent = {
-            image = "lscr.io/linuxserver/qbittorrent:latest";
-            ports = [ "8180:8180" ];
+          prowlarr = {
+            image = "ghcr.io/linuxserver/prowlarr:latest";
+            ports = [ "9696:9696" ];
             volumes = [
-              "/srv/qbittorrent:/config"
-              "/media/servarr/downloads:/media/downloads"
-            ];
-            environment = commonEnv // {
-              WEBUI_PORT = "8180";
-            };
-          };
-
-          sonarr = {
-            image = "ghcr.io/linuxserver/sonarr:latest";
-            ports = [ "8989:8989" ];
-            volumes = [
-              "/srv/sonarr:/config"
-              "/media/servarr:/media"
+              "/srv/prowlarr:/config"
             ];
             environment = commonEnv;
           };
@@ -106,13 +92,34 @@
             environment = commonEnv;
           };
 
-          prowlarr = {
-            image = "ghcr.io/linuxserver/prowlarr:latest";
-            ports = [ "9696:9696" ];
+          sonarr = {
+            image = "ghcr.io/linuxserver/sonarr:latest";
+            ports = [ "8989:8989" ];
             volumes = [
-              "/srv/prowlarr:/config"
+              "/srv/sonarr:/config"
+              "/media/servarr:/media"
             ];
             environment = commonEnv;
+          };
+
+          byparr = {
+            image = "ghcr.io/thephaseless/byparr:latest";
+            ports = [ "8191:8191" ];
+            environment = {
+              TZ = "America/Sao_Paulo";
+            };
+          };
+
+          qbittorrent = {
+            image = "lscr.io/linuxserver/qbittorrent:latest";
+            ports = [ "8180:8180" ];
+            volumes = [
+              "/srv/qbittorrent:/config"
+              "/media/servarr/downloads:/media/downloads"
+            ];
+            environment = commonEnv // {
+              WEBUI_PORT = "8180";
+            };
           };
 
           bazarr = {
@@ -123,6 +130,17 @@
               "/media/servarr:/media"
             ];
             environment = commonEnv;
+          };
+
+          jellyseerr = {
+            image = "docker.io/fallenbagel/jellyseerr:latest";
+            ports = [ "5055:5055" ];
+            volumes = [
+              "/srv/jellyseerr:/app/config"
+            ];
+            environment = {
+              TZ = "America/Sao_Paulo";
+            };
           };
 
           jellyfin = {
@@ -149,18 +167,6 @@
             ];
             environment = commonEnv;
           };
-
-          jellyseerr = {
-            image = "docker.io/fallenbagel/jellyseerr:latest";
-            ports = [ "5055:5055" ];
-            volumes = [
-              "/srv/jellyseerr:/app/config"
-            ];
-            environment = {
-              TZ = "America/Sao_Paulo";
-            };
-          };
-
         };
     };
   };
