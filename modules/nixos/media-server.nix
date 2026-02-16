@@ -13,6 +13,10 @@
           group = "media";
           uid = mediaId;
           description = "Media Server User";
+          extraGroups = [
+            "video"
+            "render"
+          ];
         };
         users.emerson.extraGroups = [ "media" ];
       };
