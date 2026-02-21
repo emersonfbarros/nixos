@@ -9,6 +9,7 @@
       graphics
       neovim-minimal
       media-server
+      pihole
       podman
       sound
       ssh
