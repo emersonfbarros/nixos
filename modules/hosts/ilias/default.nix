@@ -7,8 +7,8 @@
   flake.modules.nixos.host_ilias = {
     imports = with config.flake.modules.nixos; [
       graphics
-      neovim-minimal
       media-server
+      neovim-minimal
       pihole
       podman
       sound
