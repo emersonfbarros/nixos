@@ -30,6 +30,15 @@
         };
         kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
+
+        blacklistedKernelModules = [
+          "rtw88_8822c"
+          "rtw88_8822ce"
+          "rtw88_core"
+          "rtw88_pci"
+        ];
+
+        kernelParams = [ "pcie_aspm=off" ];
       };
 
       networking.useDHCP = lib.mkDefault true;
