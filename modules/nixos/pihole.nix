@@ -5,15 +5,14 @@
 
       containers.pihole = {
         image = "pihole/pihole:latest";
-        ports = [
-          "53:53/tcp"
-          "53:53/udp"
-          "8081:80/tcp"
+        extraOptions = [
+          "--network=host"
         ];
         environment = {
           TZ = "America/Maceio";
           FTLCONF_dns_upstreams = "1.1.1.1;8.8.8.8;2606:4700:4700::1111;2001:4860:4860::8888";
           FTLCONF_dns_listeningMode = "ALL";
+          FTLCONF_webserver_port = "8081";
         };
         volumes = [
           "/srv/pihole/etc-pihole:/etc/pihole"
