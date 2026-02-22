@@ -17,6 +17,8 @@
             "--sysctl=net.ipv6.conf.all.autoconf=1"
             "--sysctl=net.ipv6.conf.default.accept_ra=2"
             "--sysctl=net.ipv6.conf.default.autoconf=1"
+            "--sysctl=net.ipv6.conf.eth0.accept_ra=2"
+            "--sysctl=net.ipv6.conf.eth0.autoconf=1"
           ];
           environment = {
             TZ = "America/Maceio";
