@@ -11,6 +11,12 @@
             "--network=pihole_macvlan"
             "--ip=192.168.0.53"
             "--cap-add=SYS_TIME"
+            "--cap-add=SYS_NICE"
+            # Explicitly force the container kernel to accept IPv6 Router Advertisements (SLAAC)
+            "--sysctl=net.ipv6.conf.all.accept_ra=2"
+            "--sysctl=net.ipv6.conf.all.autoconf=1"
+            "--sysctl=net.ipv6.conf.default.accept_ra=2"
+            "--sysctl=net.ipv6.conf.default.autoconf=1"
           ];
           environment = {
             TZ = "America/Maceio";
@@ -34,10 +40,9 @@
           RemainAfterExit = true;
         };
         path = [ pkgs.podman ];
-        # Checks if the network exists, if not, creates it attached to your physical interface enp2s0
         script = ''
           if ! podman network exists pihole_macvlan; then
-            podman network create -d macvlan -o parent=enp2s0 --subnet=192.168.0.0/24 --gateway=192.168.0.1 pihole_macvlan
+            podman network create -d macvlan --ipv6 -o parent=enp2s0 --subnet=192.168.0.0/24 --gateway=192.168.0.1 pihole_macvlan
           fi
         '';
       };
@@ -45,15 +50,6 @@
       systemd.tmpfiles.rules = [
         "d /srv/pihole/etc-pihole 0755 root root -"
       ];
-
-      # Host firewall rules are actually bypassed for Macvlan traffic, but we keep this clean
-      networking.firewall = {
-        allowedTCPPorts = [
-          53
-          80
-        ];
-        allowedUDPPorts = [ 53 ];
-      };
 
       # The host itself uses public DNS safely without conflicting with the Pi-hole container
       networking.nameservers = [
