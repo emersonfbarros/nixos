@@ -1,7 +1,7 @@
 # System-wide packages for all NixOS hosts (including servers)
 {
   flake.modules.nixos.packages =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
         # Core CLI tools
@@ -18,7 +18,6 @@
 
         # System monitoring
         btop
-        htop
       ];
 
       # Basic neovim for editing on all hosts
@@ -27,6 +26,11 @@
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;
+      };
+
+      # System-wide aliases available to all shells (bash, zsh) on all hosts
+      environment.shellAliases = {
+        rebuild = ''sudo nixos-rebuild switch --flake "$HOME/.dotfiles#${config.networking.hostName}"'';
       };
     };
 }
